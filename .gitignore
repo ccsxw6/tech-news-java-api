@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### Test Files ###
-.testModel/
-.HelloWorld/
-.VariablesPractice/
-.VariableTypes/
+.testModel.java/
+.HelloWorld.java/
+.VariablesPractice.java/
+.VariableTypes.java/
