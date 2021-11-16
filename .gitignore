@@ -32,8 +32,3 @@ build/
 ### VS Code ###
 .vscode/
 
-### Test Files ###
-.testModel.java/
-.HelloWorld.java/
-.VariablesPractice.java/
-.VariableTypes.java/
