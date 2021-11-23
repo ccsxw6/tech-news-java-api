@@ -1,6 +1,5 @@
 package com.technews.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -27,9 +26,19 @@ public class User {
     //  @Transient to the loggedIn variable. @Transient signals to Spring Data JPA that this data is NOT to be persisted in the database, because we don't need or want a user's logged-in status to persist in the data.
     @Transient
     boolean loggedIn;
+
     // these three instance variables are lists, which are collections of objects of the same type
+    // Creating relationships for the tables in the database. One-to-many relationships in sql - In java, we can use an annotation called @OneToMany, which creates the relationships between the tables automatically.
+    // Note that the Posts variable gets the FetchType of EAGER, meaning that this list will gather all of its necessary information immediately after being created, while the variables designated as LAZY only gather information as they need it. You can only ever designate a single list as EAGER.
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Post> posts;
+
+    // Need to use FetchType.LAZY to resolve multiple bags exception
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Vote> votes;
+
+    // Need to use FetchType.LAZY to resolve multiple bags exception
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
 }
